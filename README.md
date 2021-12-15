@@ -46,7 +46,7 @@ Las variables de entorno de configuración de Wordpress:
 
 * Levantamos el contenedor con:
 ~~~
-docker-compose -up d
+docker-compose up -d
 ~~~
 
 Una vez ejecutado el comando se descargarán las imagenes del docker-compose y se crearán, levantarán los contenedores.

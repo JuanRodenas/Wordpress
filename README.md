@@ -8,12 +8,11 @@ Proyecto para crear un blog con wordpress con Docker.
 
 
 * Un blog usando la imagen oficial de WordPress.
-* Un servidor de administración de bases de datos utilizando la imagen oficial de Adminer.
 
 #### archivo php.ini
 
 
-# LEVANTAR EL CONTENEDOR DE WORDPRESS
+## LEVANTAR EL CONTENEDOR DE WORDPRESS
 En la misma ubicación que hemos indicado la carpeta WordPress, descargamos el `docker-compose.yml`
 
 ☑️ [docker-compose.yml](enlace)(enlace)

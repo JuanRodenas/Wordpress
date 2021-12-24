@@ -38,7 +38,7 @@ Directorios:
 #### Crear la red interna para comunicar con los demás contenedores
 Creada la red interna, ya podemos levantar el contenedor
 ~~~~
-docker network create nextcloud_internal
+docker network create wordpress_internal
 ~~~~
 
 #### ARCHIVO PHP.INI

@@ -41,19 +41,6 @@ Creada la red interna, ya podemos levantar el contenedor
 docker network create wordpress_internal
 ~~~~
 
-#### ARCHIVO PHP.INI
-Agregar su propio archivo por volumen todos los archivos de las carpetas conf.d se cargan: en docker-compose.yml
-~~~~
-      - ./php.ini:/usr/local/etc/php/conf.d/zzz-custom.ini
-~~~~
-mediante el comando docker
-~~~~
-      - v /path/to/your/php.ini:/usr/local/etc/php/conf.d/zzz-custom.ini
-~~~~
-
-En la misma ubicación que hemos indicado la carpeta wordpress, descargamos el `php.ini`
-☑️ [php.ini](https://github.com/JuanRodenas/Nextcloud/blob/main/php.ini)
-
 ## LEVANTAR EL CONTENEDOR DE WORDPRESS
 En la misma ubicación que hemos indicado la carpeta WordPress, descargamos el `docker-compose.yml`
 

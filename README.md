@@ -3,7 +3,7 @@ Proyecto para crear un blog con wordpress con Docker.
 
 ![alt text](https://github.com/JuanRodenas/Wordpress/blob/main/wordpress.jpeg)
 
-📁 [Documentación oficial](https://codex.wordpress.org/es:)
+📁 [Documentación oficial](https://es.wordpress.org/support/)
 
 
 

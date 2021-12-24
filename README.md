@@ -9,8 +9,50 @@ Proyecto para crear un blog con wordpress con Docker.
 
 * Un blog usando la imagen oficial de WordPress.
 
-#### archivo php.ini
+## PREPARACIÓN DE LOS ARCHIVOS Y DIRECTORIOS
 
+#### Crear los directorios donde se montarán los volúmenes de persistencia
+Creamos los directorios donde se montarán los volúmenes de persistencia
+~~~
+      mkdir /home/jrodenas/docker/wordpress/wordpress
+      mkdir /home/jrodenas/docker/wordpress/mysql
+      mkdir /home/jrodenas/docker/wordpress/redis
+~~~~
+Y le damos permisos al usuario www-data
+~~~~
+      sudo usermod -a -G www-data 'YOUR_USER'
+      sudo chown -R www-data:www-data /home/jrodenas/docker/wordpress/wordpress
+      sudo chown -R www-data:www-data /home/jrodenas/docker/wordpress/mysql
+      sudo chown -R www-data:www-data /home/jrodenas/docker/wordpress/redis
+      sudo chmod -R 775 /home/jrodenas/docker/wordpress/wordpress
+      sudo chmod -R 775 /home/jrodenas/docker/wordpress/mysql
+      sudo chmod -R 775 /home/jrodenas/docker/wordpress/redis
+~~~~
+
+Directorios:
+* **backup** Las copias de seguridad de la base de datos. Para realizar una copia de seguridad de la base de datos y almacenarla en este directorio tan solo tenéis que ejecutar el comando `sudo docker-compose exec db backup`
+* **files** Contendrá los archivos almacenados en nuestra nube. También contendrá los ficheros de configuración, ficheros de las aplicaciones instaladas, etc. Es importante realizar una copia de seguridad de este directorio/volumen de persistencia.
+* **mysql** Contendrá la totalidad de ficheros de nuestra base de datos MySQL.
+* **redis** Contiene las bases de datos que genera el servidor Redis. Obviamente también es interesante realizar una copia de seguridad de este directorio.
+
+#### Crear la red interna para comunicar con los demás contenedores
+Creada la red interna, ya podemos levantar el contenedor
+~~~~
+docker network create nextcloud_internal
+~~~~
+
+#### ARCHIVO PHP.INI
+Agregar su propio archivo por volumen todos los archivos de las carpetas conf.d se cargan: en docker-compose.yml
+~~~~
+      - ./php.ini:/usr/local/etc/php/conf.d/zzz-custom.ini
+~~~~
+mediante el comando docker
+~~~~
+      - v /path/to/your/php.ini:/usr/local/etc/php/conf.d/zzz-custom.ini
+~~~~
+
+En la misma ubicación que hemos indicado la carpeta wordpress, descargamos el `php.ini`
+☑️ [php.ini](https://github.com/JuanRodenas/Nextcloud/blob/main/php.ini)
 
 ## LEVANTAR EL CONTENEDOR DE WORDPRESS
 En la misma ubicación que hemos indicado la carpeta WordPress, descargamos el `docker-compose.yml`

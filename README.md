@@ -40,7 +40,7 @@ docker network create wordpress_internal
 ## LEVANTAR EL CONTENEDOR DE WORDPRESS
 En la misma ubicación que hemos indicado la carpeta WordPress, descargamos el `docker-compose.yml`
 
-☑️ [docker-compose.yml](enlace)(enlace)
+☑️ [docker-compose.yml](https://github.com/JuanRodenas/Wordpress/blob/main/docker-compose.yml)
 
 Abra el archivo en su editor: docker-compose.yml
 ~~~
@@ -86,7 +86,7 @@ docker-compose logs -f
 ~~~
 docker exec -u root -t -i wordpress /bin/bash
 ~~~
-* Una vez que hemos accedido al contenedor, tenemos que actualizar e instalar `sudo` y `nano` para poder modificar el archivo
+* Una vez que hemos accedido al contenedor, tenemos que actualizar e instalar `sudo` y `nano` para poder modificar los archivos
 ~~~
 apt update && apt upgrade
 ~~~

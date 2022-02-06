@@ -11,7 +11,7 @@ services:
     restart: always
     image: mariadb
     container_name: mariadb_wordpress
-    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW --innodb-file-per-table=1 --skip-innodb-read-only-compressed
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
     networks:
       - internal
     environment:
@@ -20,7 +20,7 @@ services:
       - MYSQL_DATABASE=wordpress
       - MYSQL_USER=wordpress
     volumes:
-      - /home/jrodenas/docker/wordpress/mysql:/var/lib/mysql
+      - /patch/to/data/wordpress/mysql:/var/lib/mysql
     labels:
       - "traefik.enable=false"
 
@@ -36,22 +36,19 @@ services:
     labels:
       # wordpress
       - "traefik.enable=true"
-      - "traefik.http.routers.wordpress.rule=Host(`blog.nasaus.es`)"
+      - "traefik.http.routers.wordpress.rule=Host(`your_domain`)"
       - "traefik.http.routers.wordpress.entrypoints=websecure"
       - "traefik.http.routers.wordpress.tls=true"
       - "traefik.http.routers.wordpress.tls.certresolver=lets-encrypt"
-      - "traefik.http.routers.wordpress.middlewares=securedwp"
       - "traefik.http.services.wordpress.loadbalancer.server.port=80"
       - "traefik.http.middlewares.wordpress.headers.sslredirect=true"
-      - "traefik.http.middlewares.securedwp.chain.middlewares=wordpress,lista-blanca-wordpress"
-      - "traefik.http.middlewares.lista-blanca-wordpress.ipwhitelist.sourcerange='your_ips"
     environment:
       WORDPRESS_DB_PASSWORD: 'your_passwd'
       WORDPRESS_DB_HOST: mysql_wordpress
       WORDPRESS_DB_NAME: wordpress
       WORDPRESS_DB_USER: wordpress
     volumes:
-      - /home/jrodenas/docker/wordpress/wordpress:/var/www/html
+      - /patch/to/data/wordpress/wordpress:/var/www/html
 
 networks:
   nextcloud:

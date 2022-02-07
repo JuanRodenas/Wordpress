@@ -9,7 +9,7 @@ volumes:
 services:
   mysql_wordpress:
     restart: always
-    image: mariadb
+    image: mariadb:focal
     container_name: mariadb_wordpress
     command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
     networks:

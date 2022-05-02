@@ -7,20 +7,22 @@ volumes:
     driver: local
 
 services:
-  mysql_wordpress:
+  mysqlwp:
     restart: always
     image: mariadb:focal
-    container_name: mariadb_wordpress
-    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    container_name: mysqlwp
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW --innodb-file-per-table=1 --skip-innodb-read-only-compressed
+    security_opt:
+      - no-new-privileges
     networks:
       - internal
     environment:
-      - MYSQL_ROOT_PASSWORD='your_passwd'
-      - MYSQL_PASSWORD='your_passwd'
-      - MYSQL_DATABASE=wordpress
+      - MYSQL_ROOT_PASSWORD=${ROOT_PASSWORD}
+      - MYSQL_PASSWORD=${PASSWORD}
+      - MYSQL_DATABASE=${DATABASE}
       - MYSQL_USER=wordpress
     volumes:
-      - /patch/to/data/wordpress/mysql:/var/lib/mysql
+      - /media/wordpress/mysql:/var/lib/mysql
     labels:
       - "traefik.enable=false"
 
@@ -28,27 +30,32 @@ services:
     image: wordpress:latest
     container_name: wordpress
     restart: always
+    security_opt:
+      - no-new-privileges
     networks:
       - internal
       - nextcloud
     depends_on:
-      - mysql_wordpress
+      - mysqlwp
     labels:
       # wordpress
       - "traefik.enable=true"
-      - "traefik.http.routers.wordpress.rule=Host(`your_domain`)"
+      - "traefik.http.routers.wordpress.rule=Host(`${HOST_DOMAIN}`)"
       - "traefik.http.routers.wordpress.entrypoints=websecure"
       - "traefik.http.routers.wordpress.tls=true"
       - "traefik.http.routers.wordpress.tls.certresolver=lets-encrypt"
+      - "traefik.http.routers.wordpress.middlewares=securedwp"
       - "traefik.http.services.wordpress.loadbalancer.server.port=80"
       - "traefik.http.middlewares.wordpress.headers.sslredirect=true"
+      - "traefik.http.middlewares.securedwp.chain.middlewares=wordpress,lista-blanca-wordpress"
+      - "traefik.http.middlewares.lista-blanca-wordpress.ipwhitelist.sourcerange=127.0.0.1/32, 192.168.1.0/24"
     environment:
-      WORDPRESS_DB_PASSWORD: 'your_passwd'
-      WORDPRESS_DB_HOST: mysql_wordpress
+      WORDPRESS_DB_PASSWORD: ${PASSWORD}
+      WORDPRESS_DB_HOST: mysqlwp:3306
       WORDPRESS_DB_NAME: wordpress
       WORDPRESS_DB_USER: wordpress
     volumes:
-      - /patch/to/data/wordpress/wordpress:/var/www/html
+      - /media/wordpress/wordpress:/var/www/html
 
 networks:
   nextcloud:

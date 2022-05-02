@@ -44,37 +44,31 @@ docker network create wordpress_internal
 
 ## LEVANTAR EL CONTENEDOR DE WORDPRESS
 En la misma ubicación que hemos indicado la carpeta WordPress, descargamos el `docker-compose.yml`
+<p>☑️ <a href="https://github.com/JuanRodenas/Wordpress/blob/main/docker-compose.yml">docker-compose.yml</a></p>
+<p>Y creamos el archivo de configuración .env con la configuración del archivo <a href="https://github.com/JuanRodenas/Wordpress/blob/main/.env">.env 📦</a></p>
 
-☑️ [docker-compose.yml](https://github.com/JuanRodenas/Wordpress/blob/main/docker-compose.yml)
-
-Abra el archivo en su editor: docker-compose.yml
 ~~~
-nano docker-compose.yml
-~~~
-
-Y modificamos las siguientes variables:
-~~~
-  - Modificamos la ruta de los volúmenes a la ruta donde estén los archivos.
-  - Modificamos la red `networks:`
-  - Modificamos las passwords y usuarios del docker-compose de `MySQL y WORDPRESS`
+touch .env
+nano .env
 ~~~
 
-#### Definir las variables de entorno de Wordpress
-Las variables de entorno de configuración de Wordpress:
-~~~
-    environment:
-      WORDPRESS_DB_PASSWORD: 'YOUR_PASSWORD'
-      WORDPRESS_DB_HOST: mysql_wordpress
-      WORDPRESS_DB_NAME: wordpress
-      WORDPRESS_DB_USER: wordpress
-~~~
+Cuando se abra el editor de texto configuraremos la configuración del archivo con el dominio, la password, la database y el usuario.
 
-#### Levantamos el contenedor wordpress:
+#### Definir las variables del archivo .env
+Las variables de entorno de configuración del archivo <code>.env</code> y modificamos los volúmenes del <code>docker-compose.yml</code>:
+<p>variables de entorno de configuración del archivo <code>.env</code>:</p>
+<p>  &nbsp;&nbsp;<code>HOST_DOMAIN=domain.com</code></p>
+<p>  &nbsp;&nbsp;<code>DATABASE=wordpress</code></p>
+<p>  &nbsp;&nbsp;<code>PASSWORD=password</code></p>
+<p>  &nbsp;&nbsp;<code>ROOT_PASSWORD=password</code></p>
+
+Levantamos el contenedor con:
 ~~~
 docker-compose up -d
 ~~~
+Una vez ejecutado el comando se descargarán las imagenes del docker-compose, se crearán ylevantarán los contenedores.
+<sup>PD: Si ya hemos descargado las imagenes previamente, sólo se crearán y levantarán los contenedores.</sup>
 
-Una vez ejecutado el comando se descargarán las imagenes del docker-compose y se crearán, levantarán los contenedores.
 
 #### Acceder al contenedor o ver el log del contenedor
 * Vemos todos los contenedores:

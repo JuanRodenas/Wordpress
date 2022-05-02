@@ -3,11 +3,10 @@ Proyecto para crear un blog con wordpress con Docker.
 
 ![alt text](https://github.com/JuanRodenas/Wordpress/blob/main/wordpress.jpeg)
 
-📁 [Documentación oficial](https://es.wordpress.org/support/)
-📁 [Código oficial Github](https://github.com/WordPress/wordpress-develop/tree/5.9/src)
-
-
-
+#### Documentación oficial
+Enlaces a la documentación oficial de wordpress:
+<p>📁 <a href="https://es.wordpress.org/support/">Documentación oficial</a></p>
+<p>📁 <a href="https://github.com/WordPress/wordpress-develop/tree/5.9/src">Código oficial Github</a></p>
 * Un blog usando la imagen oficial de WordPress.
 
 ## PREPARACIÓN DE LOS ARCHIVOS Y DIRECTORIOS

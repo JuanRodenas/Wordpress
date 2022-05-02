@@ -67,7 +67,7 @@ Levantamos el contenedor con:
 docker-compose up -d
 ~~~
 Una vez ejecutado el comando se descargarán las imagenes del docker-compose, se crearán ylevantarán los contenedores.
-<sup>PD: Si ya hemos descargado las imagenes previamente, sólo se crearán y levantarán los contenedores.</sup>
+<p>  &nbsp;&nbsp;<sup>Si ya hemos descargado las imagenes previamente, sólo se crearán y levantarán los contenedores.</sup></p>
 
 
 #### Acceder al contenedor o ver el log del contenedor

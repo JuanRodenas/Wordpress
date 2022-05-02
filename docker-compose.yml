@@ -12,6 +12,8 @@ services:
     image: mariadb:focal
     container_name: mysqlwp
     command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW --innodb-file-per-table=1 --skip-innodb-read-only-compressed
+    env_file:
+      - .env
     security_opt:
       - no-new-privileges
     networks:
@@ -22,7 +24,7 @@ services:
       - MYSQL_DATABASE=${DATABASE}
       - MYSQL_USER=wordpress
     volumes:
-      - /media/wordpress/mysql:/var/lib/mysql
+      - /patch/to/data/wordpress/mysql:/var/lib/mysql
     labels:
       - "traefik.enable=false"
 
@@ -30,6 +32,8 @@ services:
     image: wordpress:latest
     container_name: wordpress
     restart: always
+    env_file:
+      - .env
     security_opt:
       - no-new-privileges
     networks:
@@ -55,7 +59,7 @@ services:
       WORDPRESS_DB_NAME: wordpress
       WORDPRESS_DB_USER: wordpress
     volumes:
-      - /media/wordpress/wordpress:/var/www/html
+      - /patch/to/data/wordpress:/var/www/html
 
 networks:
   nextcloud:

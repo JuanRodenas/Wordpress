@@ -20,10 +20,8 @@ Creamos los directorios donde se montarán los volúmenes de persistencia
 Y le damos permisos al usuario www-data
 ~~~~
       sudo usermod -a -G www-data 'YOUR_USER'
-      sudo chown -R www-data:www-data /patch/to/data/wordpress/wordpress
-      sudo chown -R www-data:www-data /patch/to/data/wordpress/mysql
-      sudo chmod -R 700 /patch/to/data/wordpress/wordpress
-      sudo chmod -R 700 /patch/to/data/wordpress/mysql
+      sudo chown -R www-data:www-data /patch/to/data/wordpress
+      sudo chmod -R 770 /patch/to/data/wordpress
 ~~~~
 
 Directorios:

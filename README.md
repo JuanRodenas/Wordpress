@@ -62,6 +62,18 @@ docker-compose up -d
 Una vez ejecutado el comando se descargarán las imagenes del docker-compose, se crearán y levantarán los contenedores.
 <p>  &nbsp;&nbsp;<sup>Si ya hemos descargado las imagenes previamente, sólo se crearán y levantarán los contenedores.</sup></p>
 
+#### Levantar REDIS
+Una vez hecho esto, tienes que instalar un plugin para WordPress que te permite interaccionar con Redis. Este plugin o complemento se llama <a href="https://wordpress.org/plugins/redis-cache/">Redis Object Cache.</a></p>
+Una vez lo tengas configurado y levantado, hay trabajo que realizar. Tienes que editar el archivo `wp-config.php` y añadir los siguientes parámetros al principio del archivo:
+
+```
+define('WP_REDIS_HOST', 'wpredis');
+define('WP_REDIS_PORT', 6379);
+define('WP_REDIS_TIMEOUT', 1);
+define('WP_REDIS_READ_TIMEOUT', 1);
+define('WP_REDIS_DATABASE', 0);
+```
+Una vez instalado, tienes que acceder a su configuración y habilitarlo para que entre en funcionamiento. Comprueba que todos los parámetros que te devuelve son correctos y que todo funciona como se espera.
 
 #### Acceder al contenedor o ver el log del contenedor
 * Vemos todos los contenedores:

@@ -14,14 +14,9 @@ Enlaces a la documentación oficial de wordpress:
 #### Crear los directorios donde se montarán los volúmenes de persistencia
 Creamos los directorios donde se montarán los volúmenes de persistencia
 ~~~
-      mkdir /patch/to/data/wordpress/wordpress
-      mkdir /patch/to/data/wordpress/mysql
-~~~~
-Y le damos permisos al usuario www-data
-~~~~
-      sudo usermod -a -G www-data 'YOUR_USER'
-      sudo chown -R www-data:www-data /patch/to/data/wordpress
-      sudo chmod -R 770 /patch/to/data/wordpress
+mkdir /patch/to/data/wordpress/wordpress
+mkdir /patch/to/data/wordpress/mysql
+mkdir /patch/to/data/wordpress/redis
 ~~~~
 
 Directorios:

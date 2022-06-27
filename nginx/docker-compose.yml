@@ -1,0 +1,81 @@
+---
+version: '3'
+services:
+  wpdb:
+    container_name: wpdb
+    image: mariadb:focal
+    restart: unless-stopped
+    volumes:
+      - /patch/to/data/wordpress/datadb:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${ROOT_PASSWORD}
+      - MYSQL_PASSWORD=${PASSWORD}
+      - MYSQL_DATABASE=${DATABASE}
+      - MYSQL_USER=${USER}
+    networks:
+      - internal
+
+  wpnginx:
+    container_name: wpnginx
+    image: nginx:stable-alpine
+    restart: unless-stopped
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /patch/to/data/wordpress/html:/var/www/html
+      - /patch/to/data/wordpress/logs:/var/log/nginx/
+      - /patch/to/data/wordpress/conf/nginx-wp:/etc/nginx/
+    links:
+      - wp
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.wordpress.loadbalancer.server.port=80"
+      - "traefik.http.routers.wordpress.entrypoints=web"
+      - "traefik.http.routers.wordpress.rule=Host(`${FQDN}`)"
+      - "traefik.http.middlewares.wordpress-https-redirect.redirectscheme.scheme=websecure"
+      - "traefik.http.routers.wordpress.middlewares=wordpress-https-redirect"
+      - "traefik.http.routers.wordpress-secure.entrypoints=websecure"
+      - "traefik.http.routers.wordpress-secure.rule=Host(`${FQDN}`)"
+      - "traefik.http.routers.wordpress-secure.tls=true"
+      - "traefik.http.routers.wordpress-secure.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.wordpress.middlewares=securedwp"
+      - "traefik.http.middlewares.wordpress.headers.sslredirect=true"
+      - "traefik.http.middlewares.securedwp.chain.middlewares=wordpress,lista-blanca-wordpress,wordpress-secure"
+      - "traefik.http.middlewares.lista-blanca-wordpress.ipwhitelist.sourcerange=127.0.0.1/32, 192.168.1.0/24"
+    networks:
+      - proxy
+      - internal
+
+  wp:
+    container_name: wp
+    image: wordpress:fpm-alpine
+    restart: unless-stopped
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /patch/to/data/wordpress/conf/php.ini:/usr/local/etc/php/php.ini
+      - /patch/to/data/wordpress/html:/var/www/html
+    depends_on:
+      - wpdb
+    environment:
+      WORDPRESS_DB_PASSWORD: ${PASSWORD}
+      WORDPRESS_DB_HOST: wpdb:3306
+      WORDPRESS_DB_NAME: ${DATABASE}
+      WORDPRESS_DB_USER: ${USER}
+    networks:
+      - internal
+
+  wpredis:
+    container_name: wpredis
+    image: redis:alpine
+    restart: unless-stopped
+    volumes:
+      - /patch/to/data/wordpress/redis:/data
+    networks:
+      - internal
+
+networks:
+  proxy:
+    external: true
+  internal:
+    external: false

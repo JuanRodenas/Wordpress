@@ -64,8 +64,10 @@ Una vez ejecutado el comando se descargarán las imagenes del docker-compose, se
 
 #### Levantar REDIS
 Una vez hecho esto, tienes que instalar un plugin para WordPress que te permite interaccionar con Redis. Este plugin o complemento se llama <a href="https://wordpress.org/plugins/redis-cache/">Redis Object Cache.</a></p>
-Una vez lo tengas configurado y levantado, hay trabajo que realizar. Tienes que editar el archivo `wp-config.php` y añadir los siguientes parámetros al principio del archivo:
+Una vez lo tengas configurado y levantado, hay trabajo que realizar. Tienes que editar el archivo `wp-config.php`
+![alt text](https://wordpress.org/plugins/redis-cache/](https://github.com/JuanRodenas/Wordpress/blob/main/Redis.PNG)
 
+y añadir los siguientes parámetros en el archivo:
 ```
 define('WP_REDIS_HOST', 'wpredis');
 define('WP_REDIS_PORT', 6379);

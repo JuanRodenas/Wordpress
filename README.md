@@ -36,8 +36,8 @@ docker network create wordpress_internal
 
 ## LEVANTAR EL CONTENEDOR DE WORDPRESS
 En la misma ubicación que hemos indicado la carpeta WordPress, descargamos el `docker-compose.yml`
-<p>☑️ <a href="https://github.com/JuanRodenas/Wordpress/blob/main/docker-compose.yml">docker-compose.yml</a></p>
-<p>Y creamos el archivo de configuración .env con la configuración del archivo <a href="https://github.com/JuanRodenas/Wordpress/blob/main/.env">.env 📦</a></p>
+<p>☑️ <a href="https://github.com/JuanRodenas/Wordpress/blob/main/traefik/docker-compose.yml">docker-compose.yml</a></p>
+<p>Y creamos el archivo de configuración .env con la configuración del archivo <a href="https://github.com/JuanRodenas/Wordpress/blob/main/traefik/.env">.env 📦</a></p>
 
 ~~~
 touch .env
@@ -52,13 +52,14 @@ Las variables de entorno de configuración del archivo <code>.env</code> y modif
 <p>  &nbsp;&nbsp;<code>HOST_DOMAIN=domain.com</code></p>
 <p>  &nbsp;&nbsp;<code>DATABASE=wordpress</code></p>
 <p>  &nbsp;&nbsp;<code>PASSWORD=password</code></p>
+<p>  &nbsp;&nbsp;<code>USER=user</code></p>
 <p>  &nbsp;&nbsp;<code>ROOT_PASSWORD=password</code></p>
 
 Levantamos el contenedor con:
 ~~~
 docker-compose up -d
 ~~~
-Una vez ejecutado el comando se descargarán las imagenes del docker-compose, se crearán ylevantarán los contenedores.
+Una vez ejecutado el comando se descargarán las imagenes del docker-compose, se crearán y levantarán los contenedores.
 <p>  &nbsp;&nbsp;<sup>Si ya hemos descargado las imagenes previamente, sólo se crearán y levantarán los contenedores.</sup></p>
 
 

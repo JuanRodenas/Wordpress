@@ -38,10 +38,7 @@ services:
       - "traefik.http.routers.wordpress-secure.rule=Host(`${FQDN}`)"
       - "traefik.http.routers.wordpress-secure.tls=true"
       - "traefik.http.routers.wordpress-secure.tls.certresolver=letsencrypt"
-      - "traefik.http.routers.wordpress.middlewares=securedwp"
       - "traefik.http.middlewares.wordpress.headers.sslredirect=true"
-      - "traefik.http.middlewares.securedwp.chain.middlewares=wordpress,lista-blanca-wordpress,wordpress-secure"
-      - "traefik.http.middlewares.lista-blanca-wordpress.ipwhitelist.sourcerange=127.0.0.1/32, 192.168.1.0/24"
     networks:
       - proxy
       - internal

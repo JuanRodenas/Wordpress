@@ -56,7 +56,7 @@ services:
     image: redis:alpine
     restart: unless-stopped
     volumes:
-      - /path/to/data/wordpress/redis:/data
+      - ./redis:/data
     networks:
       - internal
 
@@ -73,7 +73,7 @@ services:
     depends_on:
       - wpdb
     volumes:
-       - ./wordpress:/var/www/html
+      - ./wordpress:/var/www/html
       - ./conf/php.ini:/usr/local/etc/php/php.ini
 
 networks:

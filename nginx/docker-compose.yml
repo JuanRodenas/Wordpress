@@ -19,9 +19,7 @@ services:
     networks:
       - internal
     volumes:
-      - /path/to/data/wordpress/mysql:/var/lib/mysql
-    labels:
-      - "traefik.enable=false"
+      - ./mysql:/var/lib/mysql
 
   wpnginx:
     container_name: wpnginx
@@ -32,7 +30,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
-      - /path/to/data/wordpress/wordpress:/var/www/html
+      - ./wordpress:/var/www/html
       - ./logs:/var/log/nginx/
       - ./conf/nginx-wp:/etc/nginx/
     links:
@@ -75,7 +73,7 @@ services:
     depends_on:
       - wpdb
     volumes:
-      - /path/to/data/wordpress/wordpress:/var/www/html
+       - ./wordpress:/var/www/html
       - ./conf/php.ini:/usr/local/etc/php/php.ini
 
 networks:

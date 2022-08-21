@@ -11,22 +11,12 @@ Proyecto para crear un blog con wordpress con Docker.
 </p>
 <!-- markdownlint-enable MD033 -->
 
-#
----
-### Imágenes docker y arquitecturas
-- Supported architectures:
-amd64, arm32v5, arm32v6, arm32v7, arm64v8, i386, mips64le, ppc64le, s390x
-
-- Imágenes recomendadas:
-fpm-alpine
-php8.1-fpm-alpine
-wordpress:latest
 ---
 #### Documentación oficial
 Enlaces a la documentación oficial de wordpress:
-<p><img src="https://github.com/JuanRodenas/Wordpress/blob/main/icons/docker%20icon.png" alt="atencion" width="20"/><a href="https://es.wordpress.org/support/">Documentación oficial</a></p>
-<p><img src="https://github.com/JuanRodenas/Wordpress/blob/main/icons/github%20icon.png" alt="atencion" width="20"/><a href="https://github.com/WordPress/wordpress-develop/tree/5.9/src">Código oficial Github</a></p>
-<p><img src="https://github.com/JuanRodenas/Wordpress/blob/main/icons/moby.png" alt="atencion" width="20"/><a href="https://hub.docker.com/_/wordpress">Código oficial en docker hub</a></p>
+<p><img src="https://github.com/JuanRodenas/Wordpress/blob/main/icons/wordpress%20icon.png" alt="atencion" width="40"/> <a href="https://es.wordpress.org/support/">Documentación oficial</a></p>
+<p><img src="https://github.com/JuanRodenas/Wordpress/blob/main/icons/github%20icon.png" alt="atencion" width="40"/> <a href="https://github.com/WordPress/wordpress-develop/tree/5.9/src">Código oficial Github</a></p>
+<p><img src="https://github.com/JuanRodenas/Wordpress/blob/main/icons/docker%20icon.png" alt="atencion" width="40"/> <a href="https://hub.docker.com/_/wordpress">Código oficial en docker hub</a></p>
 * Un blog usando la imagen oficial de WordPress.
 
 ## PREPARACIÓN DE LOS ARCHIVOS Y DIRECTORIOS
@@ -44,9 +34,13 @@ Directorios:
 * **mysql** Contendrá la totalidad de ficheros de nuestra base de datos MySQL.
 * **redis** Contiene las bases de datos que genera el servidor Redis. Obviamente también es interesante realizar una copia de seguridad de este directorio.
 * **backup** Las copias de seguridad de la base de datos. En caso de utilizar un volumen llamado `/backup`, puede realizar una copia de seguridad de la base de datos y almacenarla en este directorio tan solo tenéis que ejecutar el comando `sudo docker-compose exec db backup`
-
 #
-<blockquote class="is-info"><p>Los pasos que se explican a continuación están basados en una red que puede diferir de la que tú tienes montada. Si sigues al pie de la letra todos los pasos, pueden no coincidir con la configuración de tu <em>red</em> y dejarla inservible. Adapta en todo momento lo que a continuación se expone para que cuadre con tu red.</p></blockquote>
+### Imágenes docker y arquitecturas
+- Supported architectures:
+amd64, arm32v5, arm32v6, arm32v7, arm64v8, i386, mips64le, ppc64le, s390x
+
+- Imágenes recomendadas:
+fpm-alpine, php8.0-fpm-alpine, wordpress:latest
 
 #### Crear la red interna para comunicar con los demás contenedores
 Creada la red interna, ya podemos levantar el contenedor

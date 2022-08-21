@@ -1,13 +1,13 @@
 # Wordpress
 Proyecto para crear un blog con wordpress con Docker.
 
-![alt text](https://github.com/JuanRodenas/Wordpress/blob/main/WP%2Bnginx%2Bredis.png)
+![alt text](https://github.com/JuanRodenas/Wordpress/blob/main/icons/wordpress.jpeg)
 <p align="center">
     <a href="https://www.ui.com/">
-        <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/UbiquitiXEdgeMax.jpg" alt="UbiquitiXEdgeMax">
+        <img src="https://github.com/JuanRodenas/Wordpress/blob/main/icons/WP%2Bnginx%2Bredis.png" alt="WP%2Bnginx%2Bredis.png">
     </a>
     <br>
-    <strong>Ubiquiti networks x EdgeMax©</strong>
+    <strong>WordPress x NGINX x REDIS</strong>
 </p>
 <!-- markdownlint-enable MD033 -->
 

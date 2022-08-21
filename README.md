@@ -1,12 +1,32 @@
 # Wordpress
 Proyecto para crear un blog con wordpress con Docker.
 
-![alt text](https://github.com/JuanRodenas/Wordpress/blob/main/wordpress.jpeg)
+![alt text](https://github.com/JuanRodenas/Wordpress/blob/main/WP%2Bnginx%2Bredis.png)
+<p align="center">
+    <a href="https://www.ui.com/">
+        <img src="https://github.com/JuanRodenas/Ubiquiti/blob/main/files/UbiquitiXEdgeMax.jpg" alt="UbiquitiXEdgeMax">
+    </a>
+    <br>
+    <strong>Ubiquiti networks x EdgeMax©</strong>
+</p>
+<!-- markdownlint-enable MD033 -->
 
+#
+---
+### Imágenes docker y arquitecturas
+- Supported architectures:
+amd64, arm32v5, arm32v6, arm32v7, arm64v8, i386, mips64le, ppc64le, s390x
+
+- Imágenes recomendadas:
+fpm-alpine
+php8.1-fpm-alpine
+wordpress:latest
+---
 #### Documentación oficial
 Enlaces a la documentación oficial de wordpress:
-<p>📁 <a href="https://es.wordpress.org/support/">Documentación oficial</a></p>
-<p>📁 <a href="https://github.com/WordPress/wordpress-develop/tree/5.9/src">Código oficial Github</a></p>
+<p> <a href="https://es.wordpress.org/support/">Documentación oficial</a></p>
+<p> <a href="https://github.com/WordPress/wordpress-develop/tree/5.9/src">Código oficial Github</a></p>
+<p> <a href="https://hub.docker.com/_/wordpress">Código oficial en docker hub</a></p>
 * Un blog usando la imagen oficial de WordPress.
 
 ## PREPARACIÓN DE LOS ARCHIVOS Y DIRECTORIOS

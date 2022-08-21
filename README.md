@@ -24,9 +24,9 @@ wordpress:latest
 ---
 #### Documentación oficial
 Enlaces a la documentación oficial de wordpress:
-<p> <a href="https://es.wordpress.org/support/">Documentación oficial</a></p>
-<p> <a href="https://github.com/WordPress/wordpress-develop/tree/5.9/src">Código oficial Github</a></p>
-<p> <a href="https://hub.docker.com/_/wordpress">Código oficial en docker hub</a></p>
+<p><img src="https://github.com/JuanRodenas/Wordpress/blob/main/icons/docker%20icon.png" alt="atencion" width="20"/><a href="https://es.wordpress.org/support/">Documentación oficial</a></p>
+<p><img src="https://github.com/JuanRodenas/Wordpress/blob/main/icons/github%20icon.png" alt="atencion" width="20"/><a href="https://github.com/WordPress/wordpress-develop/tree/5.9/src">Código oficial Github</a></p>
+<p><img src="https://github.com/JuanRodenas/Wordpress/blob/main/icons/moby.png" alt="atencion" width="20"/><a href="https://hub.docker.com/_/wordpress">Código oficial en docker hub</a></p>
 * Un blog usando la imagen oficial de WordPress.
 
 ## PREPARACIÓN DE LOS ARCHIVOS Y DIRECTORIOS
@@ -85,7 +85,7 @@ Una vez ejecutado el comando se descargarán las imagenes del docker-compose, se
 #### Levantar REDIS
 Una vez hecho esto, tienes que instalar un plugin para WordPress que te permite interaccionar con Redis. Este plugin o complemento se llama <a href="https://wordpress.org/plugins/redis-cache/">Redis Object Cache.</a></p>
 Una vez lo tengas configurado y levantado, hay trabajo que realizar. Tienes que editar el archivo `wp-config.php`
-![alt text](https://github.com/JuanRodenas/Wordpress/blob/main/Redis.PNG)
+![alt text](https://github.com/JuanRodenas/Wordpress/blob/main/icons/Redis.PNG)
 
 y añadir los siguientes parámetros en el archivo:
 ```
@@ -110,6 +110,6 @@ docker exec -u root -t -i wordpress /bin/bash
 ## ACCEDER A LA WEB O DASHBOARD DE WORDPRESS
 Con el contenedor levantado tan solo tenemos que abrir el navegador web e ingresar a la URL que hemos indicado en el docker compose.
 Una vez ingresadas la credenciales tendremos acceso al panel de control. Fíjense que estamos accediendo de forma segura mediante https y TLS.
-![alt text](https://github.com/JuanRodenas/Wordpress/blob/main/pagina_web.png)
+![alt text](https://github.com/JuanRodenas/Wordpress/blob/main/icons/pagina_web.png)
 
 ## 🎉 ¡Ready!

@@ -12,7 +12,7 @@ Proyecto para crear un blog con wordpress con Docker.
 <!-- markdownlint-enable MD033 -->
 
 ### Versión latest docker Wordpress
-![Docker Image Version (latest)](https://img.shields.io/docker/v/_/wordpress/latest?arch=amd64&color=blue&logo=docker&logoColor=blue&style=for-the-badge)
+![Docker Image Version (latest)](https://img.shields.io/docker/v/_/wordpress/fpm?arch=amd64&color=blue&logo=docker&logoColor=blue&style=for-the-badge)
 
 #### Las arquitecturas soportadas por esta imagen son:
 
